@@ -16,7 +16,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { GlobalStyles } from '@mui/material';
 import { css, Global } from '@emotion/react';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['หน้าหลัก', 'ค้นหาตัวตน', 'สำรวจอาชีพ', 'เรียนต่อ', 'หาประสบการณ์', 'หางานที่ใช่',];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -116,7 +116,7 @@ function ResponsiveAppBar() {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'flex-end' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -130,9 +130,9 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
+              <Button onClick ={handleOpenUserMenu} sx={{color: 'white'}}>
+                เข้าสู่ระบบ
+              </Button>
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
