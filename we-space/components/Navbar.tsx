@@ -1,37 +1,49 @@
 "use client";
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import { styled } from '@mui/system';
-import AdbIcon from '@mui/icons-material/Adb';
-import Image from 'next/image';
-import Logo from '../public/images/we-space-logo.png'
-import Divider from '@mui/material/Divider';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import { styled } from "@mui/system";
+import AdbIcon from "@mui/icons-material/Adb";
+import Image from "next/image";
+import Logo from "../public/images/we-space-logo.png";
+import Divider from "@mui/material/Divider";
+import Signup from "./Signup"; // Import Signup component
 
-const pages = ['หน้าหลัก', 'ค้นหาตัวตน', 'สำรวจอาชีพ', 'เรียนต่อ', 'หาประสบการณ์', 'หางานที่ใช่',];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = [
+  "หน้าหลัก",
+  "ค้นหาตัวตน",
+  "สำรวจอาชีพ",
+  "เรียนต่อ",
+  "หาประสบการณ์",
+  "หางานที่ใช่",
+];
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const CustomDivider = styled(Divider)({
-  height: '50px',
-  width: '2px',
-  margin: '0 20px',
-  backgroundColor: 'grey',
+  height: "50px",
+  width: "2px",
+  margin: "0 20px",
+  backgroundColor: "grey",
 });
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-  const [activePage, setActivePage] = React.useState<string>('หน้าหลัก');
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null
+  );
+  const [activePage, setActivePage] = React.useState<string>("หน้าหลัก");
+  const [openSignUp, setOpenSignUp] = React.useState(false);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -53,11 +65,19 @@ function ResponsiveAppBar() {
     handleCloseNavMenu();
   };
 
+  const handleOpenSignUp = () => {
+    setOpenSignUp(true);
+  };
+
+  const handleCloseSignUp = () => {
+    setOpenSignUp(false);
+  };
+
   return (
-    <AppBar sx={{backgroundColor: 'white'}} position="static">
+    <AppBar sx={{ backgroundColor: "white" }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Image src={Logo} alt='atritbute' width={70} height={50}/>
+          <Image src={Logo} alt="attribute" width={70} height={50} />
           <CustomDivider orientation="vertical" />
           <Typography
             variant="h6"
@@ -66,18 +86,17 @@ function ResponsiveAppBar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 500,
-              // letterSpacing: '.3rem',
-              color: '#24D1E8',
-              textDecoration: 'none',
+              color: "#24D1E8",
+              textDecoration: "none",
             }}
           >
-          Work and Education Space for All
+            Work and Education Space for All
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -92,18 +111,18 @@ function ResponsiveAppBar() {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
               {pages.map((page) => (
@@ -113,7 +132,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -121,63 +140,69 @@ function ResponsiveAppBar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'flex-end', } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex", justifyContent: "flex-end" },
+            }}
+          >
             {pages.map((page) => (
-               <Button
-               key={page}
-               onClick={() => handlePageClick(page)}
-               variant='text'
-               sx={{
-                 my: 2,
-                 color: activePage === page ? '#24D1E8' : '#0000008A',
-                 display: 'block',
-                 ':after': {
-                   content: '""',
-                   display: 'block',
-                   width: '100%',
-                   height: '4px',
-                   backgroundColor: activePage === page ? '#24D1E8' : 'transparent',
-                   transition: 'background-color 1s',
-                   position: 'absolute',
-                   bottom: -16,
-                   left: 0,
-                 },
-               }}
-             >
-               {page}
-             </Button>
+              <Button
+                key={page}
+                onClick={() => handlePageClick(page)}
+                variant="text"
+                sx={{
+                  my: 2,
+                  color: activePage === page ? "#24D1E8" : "#0000008A",
+                  display: "block",
+                  ":after": {
+                    content: '""',
+                    display: "block",
+                    width: "100%",
+                    height: "4px",
+                    backgroundColor:
+                      activePage === page ? "#24D1E8" : "transparent",
+                    transition: "background-color 1s",
+                    position: "absolute",
+                    bottom: -16,
+                    left: 0,
+                  },
+                }}
+              >
+                {page}
+              </Button>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <Button onClick ={handleOpenUserMenu} sx={{color: '#0000008A'}}>
+              <Button onClick={handleOpenSignUp} sx={{ color: "#0000008A" }}>
                 เข้าสู่ระบบ
               </Button>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
@@ -191,7 +216,9 @@ function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </Container>
+      <Signup open={openSignUp} onClose={handleCloseSignUp} />
     </AppBar>
   );
 }
+
 export default ResponsiveAppBar;
