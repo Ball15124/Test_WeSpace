@@ -15,17 +15,18 @@ import MenuItem from '@mui/material/MenuItem';
 import { styled } from '@mui/system';
 import AdbIcon from '@mui/icons-material/Adb';
 import Image from 'next/image';
-import Logo from '../public/images/we-space-logo.png'
+import Logo from '../public/images/we-space-logo.png';
 import Divider from '@mui/material/Divider';
+import { Kanit } from 'next/font/google';
 
 const pages = ['หน้าหลัก', 'ค้นหาตัวตน', 'สำรวจอาชีพ', 'เรียนต่อ', 'หาประสบการณ์', 'หางานที่ใช่',];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const CustomDivider = styled(Divider)({
-  height: '50px',
-  width: '2px',
+  height: '40px',
+  width: '1.8px',
   margin: '0 20px',
-  backgroundColor: 'grey',
+  backgroundColor: 'rgba(203, 196, 200, 0.8)',
 });
 
 function ResponsiveAppBar() {
@@ -54,27 +55,25 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar sx={{backgroundColor: 'white'}} position="static">
+    <AppBar sx={{ backgroundColor: 'white' }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Image src={Logo} alt='atritbute' width={70} height={50}/>
+          <Image src={Logo} alt='atritbute' width={70} height={50} />
           <CustomDivider orientation="vertical" />
           <Typography
-            variant="h6"
+            variant='body2'
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 500,
-              // letterSpacing: '.3rem',
+              fontWeight: 'bold',
               color: '#24D1E8',
               textDecoration: 'none',
             }}
           >
-          Work and Education Space for All
+            Work and Education Space for All
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -115,7 +114,6 @@ function ResponsiveAppBar() {
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
-            variant="h5"
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
@@ -133,62 +131,40 @@ function ResponsiveAppBar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'flex-end', } }}>
-            {pages.map((page) => (
-               <Button
-               key={page}
-               onClick={() => handlePageClick(page)}
-               variant='text'
-               sx={{
-                 my: 2,
-                 color: activePage === page ? '#24D1E8' : '#0000008A',
-                 display: 'block',
-                 ':after': {
-                   content: '""',
-                   display: 'block',
-                   width: '100%',
-                   height: '4px',
-                   backgroundColor: activePage === page ? '#24D1E8' : 'transparent',
-                   transition: 'background-color 1s',
-                   position: 'absolute',
-                   bottom: -16,
-                   left: 0,
-                 },
-               }}
-             >
-               {page}
-             </Button>
-            ))}
-          </Box>
+            <Box sx={{ display: 'flex', width: '100%', maxWidth: '650px', justifyContent: 'flex-end', height: '70px', ':hover' : {backgroundColor: 'light-grey'} }}>
+              {pages.map((page) => (
+                <Button
+                  key={page}
+                  onClick={() => handlePageClick(page)}
+                  variant='text'
+                  sx={{
+                    // backgroundColor: 'pink',
+                    color: activePage === page ? '#24D1E8' : '#0000008A',
+                    display: 'block',
+                    fontSize: 14,
+                    position: 'relative',
+                    ':after': {
+                      content: '""',
+                      display: 'block',
+                      width: '100%',
+                      height: '4px',
+                      backgroundColor: activePage === page ? '#24D1E8' : 'transparent',
+                      transition: 'background-color 1s',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                    },
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <Button onClick ={handleOpenUserMenu} sx={{color: '#0000008A'}}>
-                เข้าสู่ระบบ
-              </Button>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                  }}
+                >
+                  
+                  {page}
+                  
+                </Button>
               ))}
-            </Menu>
+            </Box>
           </Box>
+          
         </Toolbar>
       </Container>
     </AppBar>
