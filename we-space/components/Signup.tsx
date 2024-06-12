@@ -235,15 +235,30 @@ const Signup: React.FC<SignupProps> = ({ open, onClose }) => {
                         style={{ fontSize: "12px" }}
                       >
                         การสมัครสมาชิกหมายถึงคุณยอมรับ{" "}
-                        <Link target="_blank" href="https://drive.google.com/file/d/1bgjojmiy8rY7lwYCJW48WYNrcTZVAdOV/view " style={{ color: "#24D1E8" }} underline="none">
+                        <Link
+                          target="_blank"
+                          href="https://drive.google.com/file/d/1bgjojmiy8rY7lwYCJW48WYNrcTZVAdOV/view "
+                          style={{ color: "#24D1E8" }}
+                          underline="none"
+                        >
                           ข้อกำหนดและเงื่อนไขการใช้บริการ
                         </Link>
-                        <Link target="_blank" href="https://drive.google.com/file/d/1pUAS63LPdwnKjXckfaI0dCZX7d-ha9Hs/view" style={{ color: "#24D1E8" }} underline="none">
+                        <Link
+                          target="_blank"
+                          href="https://drive.google.com/file/d/1pUAS63LPdwnKjXckfaI0dCZX7d-ha9Hs/view"
+                          style={{ color: "#24D1E8" }}
+                          underline="none"
+                        >
                           {" "}
                           นโยบายความเป็นส่วนตัว{" "}
                         </Link>
                         และ
-                        <Link target="_blank" href="https://drive.google.com/file/d/1GFjwk2auBBh-KnLN1sqIhsuo4B2-ghAu/view" style={{ color: "#24D1E8" }} underline="none">
+                        <Link
+                          target="_blank"
+                          href="https://drive.google.com/file/d/1GFjwk2auBBh-KnLN1sqIhsuo4B2-ghAu/view"
+                          style={{ color: "#24D1E8" }}
+                          underline="none"
+                        >
                           นโยบายคุ้มครองข้อมูลส่วนบุคคล
                         </Link>{" "}
                         ของ WE Space
@@ -255,7 +270,6 @@ const Signup: React.FC<SignupProps> = ({ open, onClose }) => {
             )}
           </Box>
         </Container>
-
         <Container
           style={{
             display: "flex",
@@ -267,13 +281,17 @@ const Signup: React.FC<SignupProps> = ({ open, onClose }) => {
           <Button
             variant="contained"
             style={{
-              backgroundColor: activeTab === "สมัครสมาชิก" && !checked ? "#ccc" : "#24D1E8",
+              backgroundColor:
+                activeTab === "สมัครสมาชิก" && !checked ? "#ccc" : "#24D1E8",
               color: "white",
               borderRadius: "60px",
               height: "50px",
-              cursor: activeTab === "สมัครสมาชิก" && !checked ? "default" : "pointer",
+              cursor:
+                activeTab === "สมัครสมาชิก" && !checked ? "default" : "pointer",
             }}
-            onClick={activeTab === "สมัครสมาชิก" && !checked ? undefined : onClose}
+            onClick={
+              activeTab === "สมัครสมาชิก" && !checked ? undefined : onClose
+            }
           >
             {activeTab === "เข้าสู่ระบบ" ? "เข้าสู่ระบบ" : "สมัครสมาชิก"}
           </Button>
@@ -291,7 +309,8 @@ const Signup: React.FC<SignupProps> = ({ open, onClose }) => {
           <Button
             variant="contained"
             style={{
-                backgroundColor: activeTab === "สมัครสมาชิก" && !checked ? "#ccc" : "#05CC46",
+              backgroundColor:
+                activeTab === "สมัครสมาชิก" && !checked ? "#ccc" : "#05CC46",
               color: "white",
               marginTop: "12px",
               borderRadius: "60px",

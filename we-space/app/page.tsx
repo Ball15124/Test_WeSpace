@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Kanit } from "next/font/google";
 import CssBaseline from '@mui/material/CssBaseline';
 import Footer from '../components/Footer';
+import HeroMain from "@/containers/hero-main/hero-section";
 
 
 const kanitFont = Kanit({ subsets: ["latin"],
@@ -44,6 +45,7 @@ export default function Home() {
       <CssBaseline/>
       <main className={styles.main}>
       <Navbar/>
+      <HeroMain/>
       <Footer/>
     </main>
     </ThemeProvider>
