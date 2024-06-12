@@ -8,7 +8,6 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
@@ -17,7 +16,6 @@ import AdbIcon from "@mui/icons-material/Adb";
 import Image from "next/image";
 import Logo from "../public/images/we-space-logo.png";
 import Divider from "@mui/material/Divider";
-import { Kanit } from "next/font/google";
 import Signup from "./Signup";
 
 const pages = [
@@ -32,7 +30,7 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const CustomDivider = styled(Divider)({
   height: "40px",
-  width: "1.8px",
+  width: "1.5px",
   margin: "0 20px",
   backgroundColor: "rgba(203, 196, 200, 0.8)",
 });
@@ -76,20 +74,20 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar sx={{ backgroundColor: "white" }} position="static">
+    <AppBar sx={{ backgroundColor: "white", height: 65, }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Image src={Logo} alt="atritbute" width={70} height={50} />
-          <CustomDivider orientation="vertical" />
+          <Image src={Logo} alt="atritbute" width={65} height={50}   />
+          <CustomDivider orientation="vertical" sx={{display : {xs: 'none', md: 'flex'}}} />
           <Typography
-            variant="body2"
+            variant="body1"
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontWeight: "bold",
+              fontWeight: "demi-bold",
               color: "#24D1E8",
               textDecoration: "none",
             }}
@@ -161,9 +159,8 @@ function ResponsiveAppBar() {
               sx={{
                 display: "flex",
                 width: "100%",
-                maxWidth: "650px",
-                justifyContent: "flex-end",
-                height: "70px",
+                maxWidth: "720px",
+                backgroundColor: "pink",
                 ":hover": { backgroundColor: "light-grey" },
               }}
             >
@@ -173,10 +170,14 @@ function ResponsiveAppBar() {
                   onClick={() => handlePageClick(page)}
                   variant="text"
                   sx={{
-                    // backgroundColor: 'pink',
+                    // backgroundColor: 'pink'
                     color: activePage === page ? "#24D1E8" : "#0000008A",
                     display: "block",
-                    fontSize: 14,
+                    fontSize: "14px",
+                    width: "100%",
+                    padding: "0 8px 0 8px",
+                    height: "65px",
+                    letterSpacing: "1px",
                     position: "relative",
                     ":after": {
                       content: '""',
@@ -199,11 +200,11 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <Button onClick={handleOpenSignUp} sx={{ color: "#0000008A" }}>
+            <Tooltip title="Open settings" sx= {{p: 0}}>
+              <Button onClick={handleOpenSignUp} sx={{ color: "#0000008A", ":hover": { backgroundColor: "light-grey" }, height: "65px"}}>
                 เข้าสู่ระบบ
               </Button>
-            </Tooltip>
+            </Tooltip> 
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"

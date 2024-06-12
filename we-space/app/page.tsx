@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Kanit } from "next/font/google";
 import CssBaseline from '@mui/material/CssBaseline';
+import Footer from '../components/Footer';
 
 
 const kanitFont = Kanit({ subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function Home() {
       <CssBaseline/>
       <main className={styles.main}>
       <Navbar/>
+      <Footer/>
     </main>
     </ThemeProvider>
   );
