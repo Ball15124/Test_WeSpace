@@ -1,24 +1,24 @@
 "use client";
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import { styled } from "@mui/system";
-import AdbIcon from "@mui/icons-material/Adb";
-import Image from "next/image";
-import Logo from "../public/images/we-space-logo.png";
-import Divider from "@mui/material/Divider";
-import { Kanit } from "next/font/google";
-import Signup from "./Signup";
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import { styled } from '@mui/system';
+import AdbIcon from '@mui/icons-material/Adb';
+import Image from 'next/image';
+import Logo from '../public/images/we-space-logo.png';
+import Divider from '@mui/material/Divider';
+import { Kanit } from 'next/font/google';
+import Signup from './Signup';
 
 const pages = [
   "หน้าหลัก",
@@ -31,10 +31,10 @@ const pages = [
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const CustomDivider = styled(Divider)({
-  height: "40px",
-  width: "1.8px",
-  margin: "0 20px",
-  backgroundColor: "rgba(203, 196, 200, 0.8)",
+  height: '40px',
+  width: '1.8px',
+  margin: '0 20px',
+  backgroundColor: 'rgba(203, 196, 200, 0.8)',
 });
 
 function ResponsiveAppBar() {
@@ -76,22 +76,22 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar sx={{ backgroundColor: "white" }} position="static">
+    <AppBar sx={{ backgroundColor: 'white' }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Image src={Logo} alt="atritbute" width={70} height={50} />
+          <Image src={Logo} alt='atritbute' width={70} height={50} />
           <CustomDivider orientation="vertical" />
           <Typography
-            variant="body2"
+            variant='body2'
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontWeight: "bold",
-              color: "#24D1E8",
-              textDecoration: "none",
+              display: { xs: 'none', md: 'flex' },
+              fontWeight: 'bold',
+              color: '#24D1E8',
+              textDecoration: 'none',
             }}
           >
             Work and Education Space for All
@@ -157,45 +157,31 @@ function ResponsiveAppBar() {
               display: { xs: "none", md: "flex", justifyContent: "flex-end" },
             }}
           >
-            <Box
-              sx={{
-                display: "flex",
-                width: "100%",
-                maxWidth: "650px",
-                justifyContent: "flex-end",
-                height: "70px",
-                ":hover": { backgroundColor: "light-grey" },
-              }}
-            >
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={() => handlePageClick(page)}
-                  variant="text"
-                  sx={{
-                    // backgroundColor: 'pink',
-                    color: activePage === page ? "#24D1E8" : "#0000008A",
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={() => handlePageClick(page)}
+                variant="text"
+                sx={{
+                  my: 2,
+                  color: activePage === page ? "#24D1E8" : "#0000008A",
+                  display: "block",
+                  ":after": {
+                    content: '""',
                     display: "block",
-                    fontSize: 14,
-                    position: "relative",
-                    ":after": {
-                      content: '""',
-                      display: "block",
-                      width: "100%",
-                      height: "4px",
-                      backgroundColor:
-                        activePage === page ? "#24D1E8" : "transparent",
-                      transition: "background-color 1s",
-                      position: "absolute",
-                      bottom: 0,
-                      left: 0,
-                    },
-                  }}
-                >
-                  {page}
-                </Button>
-              ))}
-            </Box>
+                    width: "100%",
+                    height: "4px",
+                    backgroundColor: activePage === page ? "#24D1E8" : "transparent",
+                    transition: "background-color 1s",
+                    position: "absolute",
+                    bottom: -16,
+                    left: 0,
+                  },
+                }}
+              >
+                {page}
+              </Button>
+            ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -230,6 +216,7 @@ function ResponsiveAppBar() {
         </Toolbar>
       </Container>
       <Signup open={openSignUp} onClose={handleCloseSignUp} />
+      
     </AppBar>
   );
 }

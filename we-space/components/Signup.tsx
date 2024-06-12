@@ -13,8 +13,8 @@ import {
   Box,
   Checkbox,
   Container,
-  CssBaseline,
   FormControlLabel,
+  Link,
   Typography,
 } from "@mui/material";
 import style from "../styles/signup.module.css";
@@ -40,7 +40,8 @@ const SeparatorLine = () => {
 
 const Signup: React.FC<SignupProps> = ({ open, onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [activeTab, setActiveTab] = useState("เข้าสู่ระบบ"); // Set default active tab to "เข้าสู่ระบบ"
+  const [activeTab, setActiveTab] = useState("เข้าสู่ระบบ");
+  const [checked, setChecked] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = (
@@ -53,32 +54,49 @@ const Signup: React.FC<SignupProps> = ({ open, onClose }) => {
     console.log("Forgot Password clicked");
   };
 
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+  };
+
   return (
-    <Dialog open={open} onClose={onClose}>
-      <CssBaseline />
-      <IconButton onClick={onClose} style={{ justifyContent: "end" }}>
-        <CloseIcon />
-      </IconButton>
-      <Container
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          padding: "30px",
-          borderRadius: "30px",
-        }}
-      >
+    <Dialog
+      open={open}
+      onClose={onClose}
+      maxWidth="sm"
+      PaperProps={{
+        style: {
+          width: "100%",
+          height: "100%",
+          maxWidth: "400px",
+          padding: 0,
+          overflow: "hidden",
+          margin: 0,
+        },
+      }}
+    >
+      <Container className={style.popupFormContainer}>
+        <IconButton
+          onClick={onClose}
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
         <Box
           style={{
             display: "flex",
             justifyContent: "center",
-            marginBottom: "16px",
+            marginTop: "20px",
           }}
         >
-          <Image src={Logo} alt="We Space" width={165} height={138} />
+          <Image src={Logo} alt="We Space" width={165} height={135} />
         </Box>
         <Container
           className={style.tabs}
-          style={{ paddingLeft: 50, paddingRight: 50 }}
+          style={{ paddingLeft: 10, paddingRight: 10, margin: 0 }}
         >
           <Typography
             className={`${style.tab} ${
@@ -109,6 +127,7 @@ const Signup: React.FC<SignupProps> = ({ open, onClose }) => {
                   type="text"
                   fullWidth
                   variant="standard"
+                  className={style.textField}
                 />
                 <TextField
                   margin="dense"
@@ -117,6 +136,7 @@ const Signup: React.FC<SignupProps> = ({ open, onClose }) => {
                   type={showPassword ? "text" : "password"}
                   fullWidth
                   variant="standard"
+                  className={style.textField}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -150,76 +170,110 @@ const Signup: React.FC<SignupProps> = ({ open, onClose }) => {
               </>
             ) : (
               <>
-                <Box>
+                <Container style={{ paddingLeft: 0, paddingRight: 0 }}>
+                  <Box>
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="email-signup"
+                      label="ชื่อผู้ใช้งาน (อีเมล)"
+                      type="text"
+                      fullWidth
+                      variant="standard"
+                      className={style.textField}
+                    />
+                    <TextField
+                      margin="dense"
+                      id="password-signup"
+                      label="รหัสผ่าน"
+                      type={showPassword ? "text" : "password"}
+                      fullWidth
+                      variant="standard"
+                      className={style.textField}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              onClick={handleClickShowPassword}
+                              onMouseDown={handleMouseDownPassword}
+                            >
+                              {showPassword ? (
+                                <Visibility />
+                              ) : (
+                                <VisibilityOff />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  </Box>
                   <TextField
-                    autoFocus
                     margin="dense"
-                    id="email-login"
-                    label="ชื่อผู้ใช้งาน (อีเมล)"
-                    type="text"
-                    fullWidth
-                    variant="standard"
-                  />
-                  <TextField
-                    margin="dense"
-                    id="password-login"
-                    label="รหัสผ่าน"
+                    id="cpassword-signup"
+                    label="ยืนยันรหัสผ่าน"
                     type={showPassword ? "text" : "password"}
                     fullWidth
                     variant="standard"
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                          >
-                            {showPassword ? <Visibility /> : <VisibilityOff />}
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
+                    className={style.textField}
                   />
-                </Box>
-                <TextField
-                  autoFocus
-                  margin="dense"
-                  id="cpassword-login"
-                  label="ยืนยันรหัสผ่าน"
-                  type={showPassword ? "text" : "password"}
-                  fullWidth
-                  variant="standard"
-                />
+                  <FormControlLabel
+                    style={{ marginTop: "10px" }}
+                    control={
+                      <Checkbox
+                        checked={checked}
+                        onChange={handleCheckboxChange}
+                        name="acceptTerms"
+                        color="primary"
+                      />
+                    }
+                    label={
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        style={{ fontSize: "12px" }}
+                      >
+                        การสมัครสมาชิกหมายถึงคุณยอมรับ{" "}
+                        <Link target="_blank" href="https://drive.google.com/file/d/1bgjojmiy8rY7lwYCJW48WYNrcTZVAdOV/view " style={{ color: "#24D1E8" }} underline="none">
+                          ข้อกำหนดและเงื่อนไขการใช้บริการ
+                        </Link>
+                        <Link target="_blank" href="https://drive.google.com/file/d/1pUAS63LPdwnKjXckfaI0dCZX7d-ha9Hs/view" style={{ color: "#24D1E8" }} underline="none">
+                          {" "}
+                          นโยบายความเป็นส่วนตัว{" "}
+                        </Link>
+                        และ
+                        <Link target="_blank" href="https://drive.google.com/file/d/1GFjwk2auBBh-KnLN1sqIhsuo4B2-ghAu/view" style={{ color: "#24D1E8" }} underline="none">
+                          นโยบายคุ้มครองข้อมูลส่วนบุคคล
+                        </Link>{" "}
+                        ของ WE Space
+                      </Typography>
+                    }
+                  />
+                </Container>
               </>
             )}
           </Box>
-          {/* <Container style={{ display: "flex", flexDirection: "row" }}>
-            <FormControlLabel control={<Checkbox defaultChecked />} label="" />
-            <p style={{ fontSize: "12px" }}>
-              การสมัครสมาชิกหมายถึงคุณยอมรับ
-            </p>
-            <p style={{ fontSize: "12px" }}>การสมัครสมาชิกหมายถึงคุณยอมรับ</p>
-          </Container> */}
         </Container>
+
         <Container
           style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            marginTop: "10px",
             padding: "10px 10px",
           }}
         >
           <Button
             variant="contained"
             style={{
-              backgroundColor: "#24D1E8",
+              backgroundColor: activeTab === "สมัครสมาชิก" && !checked ? "#ccc" : "#24D1E8",
               color: "white",
               borderRadius: "60px",
               height: "50px",
+              cursor: activeTab === "สมัครสมาชิก" && !checked ? "default" : "pointer",
             }}
-            onClick={onClose}
+            onClick={activeTab === "สมัครสมาชิก" && !checked ? undefined : onClose}
           >
             {activeTab === "เข้าสู่ระบบ" ? "เข้าสู่ระบบ" : "สมัครสมาชิก"}
           </Button>
@@ -227,7 +281,7 @@ const Signup: React.FC<SignupProps> = ({ open, onClose }) => {
             style={{
               display: "flex",
               justifyContent: "center",
-              marginTop: "13px",
+              marginTop: "10px",
             }}
           >
             <SeparatorLine />
@@ -237,13 +291,14 @@ const Signup: React.FC<SignupProps> = ({ open, onClose }) => {
           <Button
             variant="contained"
             style={{
-              backgroundColor: "#05CC46",
+                backgroundColor: activeTab === "สมัครสมาชิก" && !checked ? "#ccc" : "#05CC46",
               color: "white",
-              marginTop: "16px",
+              marginTop: "12px",
               borderRadius: "60px",
               height: "50px",
+              cursor: checked ? "pointer" : "default",
             }}
-            onClick={onClose}
+            onClick={checked ? onClose : undefined}
           >
             เข้าสู่ระบบด้วย Line
           </Button>
