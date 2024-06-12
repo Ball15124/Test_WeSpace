@@ -1,10 +1,11 @@
 .popupFormContainer {
     top: 0;
     left: 0;
-    width: 70%;
+    width: 95%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    /* background-color: rgba(0, 0, 0, 0.5); */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -12,7 +13,6 @@
 
 .popupForm {
     background-color: white;
-    padding: 20px;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -45,4 +45,11 @@
 .logoConatiner { 
     display: flex;
     justify-content: center;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    font-size: 10px;
 }

@@ -231,6 +231,7 @@ function ResponsiveAppBar() {
         </Toolbar>
       </Container>
       <Signup open={openSignUp} onClose={handleCloseSignUp} />
+      
     </AppBar>
   );
 }
