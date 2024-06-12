@@ -43,11 +43,11 @@ function HeroMain() {
           </h1>
           <h2
             className="hero-main__description"
-            style={{ fontSize: "30px", margin: "0" }}
+            style={{ fontSize: "30px", margin: "0", color:"#000000"}}
           >
             Live a meaningful life
           </h2>
-          <p style={{ marginTop: "5px", marginBottom: "30px" }}>
+          <p style={{ marginTop: "5px", marginBottom: "30px", color:"#2F4858" }}>
             เราจะช่วยให้คุณได้รู้จักตนเอง รู้จักอาชีพและ
             <br />
             ออกแบบเส้นทางเดินในชีวิต
