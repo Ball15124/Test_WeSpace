@@ -32,7 +32,7 @@ export default function RootLayout({
       <body className={kanitFont.className}>
         <ThemeProvider theme={theme}>
           <Navbar />
-          {children}
+          <main>{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

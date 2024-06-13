@@ -162,8 +162,8 @@ function ResponsiveAppBar() {
 
   return (
     <>
-      <AppBar sx={{ backgroundColor: "white", height: 65, boxShadow: 3}} position="static">
-        <Container maxWidth="xl" sx={{ boxShadow: 3 }}>
+      <AppBar position='sticky' sx={{ backgroundColor: "white", height: 65, boxShadow: 3,}}>
+        <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Image src={Logo} alt="atritbute" width={65} height={50} />
             <CustomDivider orientation="vertical" sx={{ display: { xs: "none", md: "flex" } }} />

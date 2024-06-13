@@ -11,7 +11,7 @@ const Span = () => {
       style={{
         width: "40px",
         height: "10px",
-        backgroundColor: "#24d1e8",
+        backgroundColor: "#24D1E8",
         marginTop: "12px",
         alignSelf: "center",
       }}
@@ -43,7 +43,7 @@ function FeatureMain() {
         paddingBottom: "30px",
       }}
     >
-      <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
         <h1 className="text-center text mt-4">อยากทำอะไร</h1>
         <Span />
         <Grid container spacing={3} style={{ marginTop: "10px" }}>

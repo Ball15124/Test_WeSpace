@@ -1,28 +1,27 @@
-'use client';
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
 import Navbar from "../components/Navbar";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Kanit } from "next/font/google";
-import CssBaseline from '@mui/material/CssBaseline';
+import CssBaseline from "@mui/material/CssBaseline";
 import HeroMain from "@/containers/hero-main/hero-section";
 import FeatureMain from "@/containers/feature-main/feature-section";
 import TestimonialMain from "@/containers/testmonial-main/testimonial";
 
-
-const kanitFont = Kanit({ subsets: ["latin"],
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
-  display: 'swap'
-})
-
+const kanitFont = Kanit({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
 
 const theme = createTheme({
   typography: {
     fontFamily: kanitFont.style.fontFamily,
     button: {
       fontFamily: kanitFont.style.fontFamily, // Ensure buttons use the Kanit font
-      textTransform: 'none', // Optional: prevent uppercase transformation
+      textTransform: "none", // Optional: prevent uppercase transformation
     },
     // You can further customize other typography variants if needed
     h1: { fontFamily: kanitFont.style.fontFamily },
@@ -42,11 +41,10 @@ const theme = createTheme({
 
 export default function Home() {
   return (
-      <HeroMain/>
+    <>
+      <HeroMain />
       <FeatureMain />
       <TestimonialMain />
-      <Footer/>
-    </main>
-    </ThemeProvider>
+    </>
   );
 }
