@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import { Inter, Kanit } from "next/font/google";
 import "./globals.css";
-import favicon from './favicon.ico';
+import favicon from "./favicon.ico";
+import Navbar from "../components/Navbar";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Footer from "../components/Footer";
+import theme from "./theme";
 
 const inter = Inter({ subsets: ["latin"] });
-const kanit = Kanit({ subsets: ["latin"],
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
-  display: 'swap'
-})
+const kanitFont = Kanit({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "WE Space | Live a meaningful life |",
@@ -24,7 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <link rel="icon" href={faviconUrl} />
-      <body className={kanit.className}>{children}</body>
+      <body className={kanitFont.className}>
+        <ThemeProvider theme={theme}>
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
