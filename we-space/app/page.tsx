@@ -8,13 +8,14 @@ import CssBaseline from "@mui/material/CssBaseline";
 import HeroMain from "@/containers/hero-main/hero-section";
 import FeatureMain from "@/containers/feature-main/feature-section";
 import TestimonialMain from "@/containers/testmonial-main/testimonial";
+import PartnerMain from "@/containers/partner-main/partner-section";
 
-const kanitFont = Kanit({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
+const kanitFont = Kanit({ subsets: ["latin"],
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap'
+})
+
 
 const theme = createTheme({
   typography: {
@@ -45,6 +46,7 @@ export default function Home() {
       <HeroMain />
       <FeatureMain />
       <TestimonialMain />
+      <PartnerMain />
     </>
   );
 }
