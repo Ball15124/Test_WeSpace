@@ -1,21 +1,13 @@
 'use client';
-import Image from "next/image";
-import styles from "./page.module.css";
-import Navbar from "../components/Navbar";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import { Kanit } from "next/font/google";
-import CssBaseline from '@mui/material/CssBaseline';
-import HeroMain from "@/containers/hero-main/hero-section";
-import FeatureMain from "@/containers/feature-main/feature-section";
-import TestimonialMain from "@/containers/testmonial-main/testimonial";
-import PartnerMain from "@/containers/partner-main/partner-section";
+
 
 const kanitFont = Kanit({ subsets: ["latin"],
   weight: ['400', '700'],
   style: ['normal', 'italic'],
   display: 'swap'
 })
-
 
 const theme = createTheme({
   typography: {
@@ -40,14 +32,4 @@ const theme = createTheme({
   },
 });
 
-export default function Home() {
-  return (
-      <HeroMain/>
-      <FeatureMain />
-      <TestimonialMain />
-      <PartnerMain />
-      <Footer/>
-    </main>
-    </ThemeProvider>
-  );
-}
+export default theme;
